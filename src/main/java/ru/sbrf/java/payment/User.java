@@ -1,6 +1,8 @@
 package ru.sbrf.java.payment;
 
-public class User {
+import ru.sbrf.java.payment.appendix.Payable;
+
+public class User  {
     private long phoneNumber;
     private float countBalance;
     private int currency;

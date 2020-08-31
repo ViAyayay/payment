@@ -2,7 +2,7 @@ package ru.sbrf.java.payment.appendix;
 
 import ru.sbrf.java.payment.server.Client;
 
-public class Sbol {
+public class Sbol implements Payable{
     private String serverADDR;
     private int serverPort;
     private int protocol;
@@ -13,7 +13,8 @@ public class Sbol {
         this.protocol = protocol;
     }
 
-    private void pay(Client user, long targetNumber, long sum, int currency){
+    @Override
+    public void pay(Client user, long targetNumber, long sum, int currency){
 
     }
 }

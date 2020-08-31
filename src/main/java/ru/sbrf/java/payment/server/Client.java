@@ -1,52 +1,36 @@
 package ru.sbrf.java.payment.server;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class Client {
     private long phoneNumber;
-    private LinkedList<Counts> clientCountsList;
+    private ArrayList<Counts> clientCountsList;
 
     public Client(long phoneNumber) {
         this.phoneNumber = phoneNumber;
+        CountsLoader loader = new CountsLoader(this);
+        clientCountsList = loader.getCountList();
     }
 
     public long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public boolean setPhoneNumber(long phoneNumber) { //ради Exception
+        CountsLoader loader = new CountsLoader(this);
+        try {
+            loader.setNewPhoneNumber(phoneNumber);
+            this.phoneNumber = phoneNumber;
+            return true;
+        } catch (IllegalChaneException e){
+            return false;
+        }
     }
 
-    public LinkedList<Counts> getClientCountsList() {
+    public ArrayList<Counts> getClientCountsList() {
         return clientCountsList;
     }
+
+
 }
 
-class Counts{
-    private long countBalance;
-    private final int currency;
-    private final long countNumber;
-
-    public Counts(long countBalance, short currency, long countNumber) {
-        this.countBalance = countBalance;
-        this.currency = currency;
-        this.countNumber = countNumber;
-    }
-
-    public long getCountNumber() {
-        return countNumber;
-    }
-
-    public long getCountBalance() {
-        return countBalance;
-    }
-
-    public void setCountBalance(long countBalance) {
-        this.countBalance = countBalance;
-    }
-
-    public int getCurrency() {
-        return currency;
-    }
-}
