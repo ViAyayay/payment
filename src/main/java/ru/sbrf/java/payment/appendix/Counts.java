@@ -1,4 +1,4 @@
-package ru.sbrf.java.payment.server;
+package ru.sbrf.java.payment.appendix;
 
 class Counts {
     private long countBalance;
