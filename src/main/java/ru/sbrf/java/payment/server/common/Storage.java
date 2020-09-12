@@ -5,7 +5,6 @@ import ru.sbrf.java.payment.exceptions.WrongRequestException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 
 public class Storage {
     private static HashMap<Long, ArrayList<Counts>> countsList = new HashMap<>();
