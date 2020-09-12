@@ -1,11 +1,10 @@
-package ru.sbrf.java.payment.appendix;
-
+package ru.sbrf.java.payment.client;
 
 import java.util.ArrayList;
 
-class User  {
+public class User  {
     private long phoneNumber;
-    private ArrayList<Counts> clientCountsList;
+    private ArrayList<Counts> clientCountsList ;
 
     public User(long phoneNumber) {
         this.phoneNumber = phoneNumber;
@@ -14,9 +13,4 @@ class User  {
     public long getPhoneNumber() {
         return phoneNumber;
     }
-
-    public ArrayList<Counts> getClientCountsList() {
-        return clientCountsList;
-    }
-
 }
