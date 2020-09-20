@@ -17,4 +17,8 @@ public class User  {
     public long getPhoneNumber() {
         return phoneNumber;
     }
+
+    public void setClientCountsList(ArrayList<Counts> clientCountsList) {
+        this.clientCountsList = clientCountsList;
+    }
 }

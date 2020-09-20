@@ -23,8 +23,7 @@ public class WebAppendixLoader implements AppendixLoader {
 
     @Override
     public void loadCountList(User user) {
-        ArrayList<Counts> list;
-        list = connector.loadCountsList(user);
+        user.setClientCountsList(connector.loadCountsList(user));
     }
 
     private User createUser() {

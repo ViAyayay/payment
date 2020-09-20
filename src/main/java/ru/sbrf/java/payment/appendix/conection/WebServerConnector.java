@@ -1,7 +1,6 @@
 package ru.sbrf.java.payment.appendix.conection;
 
 import ru.sbrf.java.payment.client.Counts;
-import ru.sbrf.java.payment.client.Currency;
 import ru.sbrf.java.payment.client.PaymentParameters;
 import ru.sbrf.java.payment.client.User;
 import ru.sbrf.java.payment.exceptions.WrongRequestException;
@@ -21,10 +20,9 @@ public class WebServerConnector implements ServerConnector {
     @Override
     public ArrayList<Counts> loadCountsList(User user) {
         try {
-            long phoneNumber = user.getPhoneNumber();
-            return Server.loadCountsList(getIdentifier(), phoneNumber);
+            return Server.loadCountsList(getIdentifier(), user.GetUserWithoutCounts());
         }catch (WrongRequestException e){
-            return null;
+            return null; //todo
         }
     }
 

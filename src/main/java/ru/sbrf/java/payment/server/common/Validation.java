@@ -16,7 +16,7 @@ public class Validation {
 
     public Validation(PaymentParameters paymentParameters) {
         this.phoneNumber = paymentParameters.getUser().get().getPhoneNumber();
-        countsList = Storage.getListFromPhone(phoneNumber);
+        countsList = Storage.getListFromPhone(paymentParameters.getUser().get());
         setCurrency(paymentParameters.getCurrency().get());
     }
 
@@ -27,6 +27,7 @@ public class Validation {
                 countNumber = c.getCountNumber();
             }
         }
+        if (countNumber==null) throw new WrongRequestException("Wrong currency ");
     }
 
     public void pay(BigDecimal sum, String otherCountNumber) {
