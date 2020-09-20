@@ -10,6 +10,10 @@ public class User  {
         this.phoneNumber = phoneNumber;
     }
 
+    public User GetUserWithoutCounts(){
+        return new User(phoneNumber);
+    }
+
     public long getPhoneNumber() {
         return phoneNumber;
     }

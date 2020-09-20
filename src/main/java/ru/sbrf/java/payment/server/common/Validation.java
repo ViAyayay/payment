@@ -2,19 +2,22 @@ package ru.sbrf.java.payment.server.common;
 
 import ru.sbrf.java.payment.client.Counts;
 import ru.sbrf.java.payment.client.Currency;
+import ru.sbrf.java.payment.client.PaymentParameters;
 import ru.sbrf.java.payment.exceptions.WrongRequestException;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class Validation {
     private Long phoneNumber;
     private ArrayList<Counts> countsList;
-    private Long balance;
+    private BigDecimal balance;
     private String countNumber;
 
-    public Validation(Long phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public Validation(PaymentParameters paymentParameters) {
+        this.phoneNumber = paymentParameters.getUser().get().getPhoneNumber();
         countsList = Storage.getListFromPhone(phoneNumber);
+        setCurrency(paymentParameters.getCurrency().get());
     }
 
     public void setCurrency(Currency currency) {
@@ -26,8 +29,8 @@ public class Validation {
         }
     }
 
-    public void pay(long sum, String otherCountNumber) {
-        if(balance < sum) throw new WrongRequestException("incorrect write-off amount. ");
+    public void pay(BigDecimal sum, String otherCountNumber) {
+        if(balance.compareTo(sum) < 0) throw new WrongRequestException("incorrect write-off amount. ");
         Storage.transfer(countNumber, otherCountNumber, sum);
     }
 }

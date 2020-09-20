@@ -1,17 +1,19 @@
 package ru.sbrf.java.payment.client;
 
+import java.math.BigDecimal;
+
 public class Counts {
-    private long countBalance;
+    private BigDecimal countBalance;
     private final Currency currency;
     private final String countNumber;
 
-    public Counts(long countBalance, Currency currency, String countNumber) {
+    public Counts(BigDecimal countBalance, Currency currency, String countNumber) {
         this.countBalance = countBalance;
         this.currency = currency;
         this.countNumber = countNumber;
     }
 
-    public long getCountBalance() {
+    public BigDecimal getCountBalance() {
         return countBalance;
     }
 

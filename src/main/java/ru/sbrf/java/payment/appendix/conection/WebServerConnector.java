@@ -2,6 +2,7 @@ package ru.sbrf.java.payment.appendix.conection;
 
 import ru.sbrf.java.payment.client.Counts;
 import ru.sbrf.java.payment.client.Currency;
+import ru.sbrf.java.payment.client.PaymentParameters;
 import ru.sbrf.java.payment.client.User;
 import ru.sbrf.java.payment.exceptions.WrongRequestException;
 import ru.sbrf.java.payment.server.conection.AppConnector;
@@ -28,10 +29,9 @@ public class WebServerConnector implements ServerConnector {
     }
 
     @Override
-    public void payToPhone(User user, long targetNumber, long sum, Currency currency) {
+    public void payToPhone(PaymentParameters paymentParameters, long targetNumber) {
         try {
-            long phoneNumber = user.getPhoneNumber();
-            Server.payToPhone(getIdentifier(), phoneNumber, targetNumber, sum, currency);
+            Server.payToPhone(getIdentifier(), paymentParameters, targetNumber);
         }catch (WrongRequestException e){
 
         }

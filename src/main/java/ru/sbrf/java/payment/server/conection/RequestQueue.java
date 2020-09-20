@@ -11,7 +11,7 @@ public class RequestQueue<S>{
         if(queue.contains(identifier)){
             throw new WrongRequestException("double " + identifier, identifier.toString());
         }else {
-            if(queue.size()>5) queue.remove();
+            while(queue.size()>5) queue.remove();
             queue.addLast(identifier);
         }
     }

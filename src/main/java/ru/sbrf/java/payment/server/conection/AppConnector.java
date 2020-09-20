@@ -2,6 +2,7 @@ package ru.sbrf.java.payment.server.conection;
 
 import ru.sbrf.java.payment.client.Counts;
 import ru.sbrf.java.payment.client.Currency;
+import ru.sbrf.java.payment.client.PaymentParameters;
 import ru.sbrf.java.payment.exceptions.WrongRequestException;
 import ru.sbrf.java.payment.server.common.Storage;
 import ru.sbrf.java.payment.server.common.Validation;
@@ -20,12 +21,11 @@ public class AppConnector<S>  {
         }
     }
 
-    public void payToPhone(S identifier, long phoneNumber, long targetNumber, long sum, Currency currency) {
+    public void payToPhone(S identifier, PaymentParameters paymentParameters, long targetNumber) {
         try {
             checkRequest(identifier);
-            Validation validation = new Validation(phoneNumber);
-            validation.setCurrency(currency);
-            validation.pay(sum, getOtherCountByPhone(targetNumber));
+            Validation validation = new Validation(paymentParameters);
+            validation.pay(paymentParameters.getSum().get(), getOtherCountByPhone(targetNumber));
         } catch (WrongRequestException e){
             throw new WrongRequestException(e.getMessage(), (String)identifier);
         }

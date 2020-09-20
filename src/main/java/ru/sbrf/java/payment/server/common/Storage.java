@@ -3,6 +3,7 @@ package ru.sbrf.java.payment.server.common;
 import ru.sbrf.java.payment.client.Counts;
 import ru.sbrf.java.payment.exceptions.WrongRequestException;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -15,6 +16,6 @@ public class Storage {
         return list;
     }
 
-    public static void transfer(String countNumber, String otherCountNumber, long sum) {
+    public static void transfer(String countNumber, String otherCountNumber, BigDecimal sum) {
     }
 }
