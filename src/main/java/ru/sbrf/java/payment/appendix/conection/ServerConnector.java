@@ -11,5 +11,5 @@ public interface ServerConnector {
 
     ArrayList<Counts> loadCountsList(User user);
 
-    void payToPhone(PaymentParameters paymentParameters, long targetNumber);
+    void pay(PaymentParameters paymentParameters);
 }

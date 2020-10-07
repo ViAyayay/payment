@@ -1,13 +1,14 @@
 package ru.sbrf.java.payment.appendix.common;
 
 import ru.sbrf.java.payment.appendix.conection.*;
+import ru.sbrf.java.payment.appendix.operation.Operations;
 import ru.sbrf.java.payment.appendix.operation.ToPhonePayment;
 import ru.sbrf.java.payment.client.Currency;
 import ru.sbrf.java.payment.client.PaymentParameters;
 import ru.sbrf.java.payment.client.User;
 
 import java.math.BigDecimal;
-import java.util.Optional;
+import java.util.Objects;
 
 class Sbol implements ToPhonePayment {
     private String serverADDR;
@@ -30,12 +31,18 @@ class Sbol implements ToPhonePayment {
     }
 
 
-    public void loadClientCountsList() {
-        appLoader.loadCountList(user);
-    }
-
     @Override
     public void payToPhone(long targetNumber, BigDecimal sum, Currency currency){
-        connector.payToPhone(new PaymentParameters(Optional.of(user.GetUserWithoutCounts()), Optional.empty(), Optional.of(currency), Optional.of(sum)), targetNumber);
+        connector.pay(new PaymentParameters()
+                                            .setUser(user.GetUserWithoutCounts())
+                                            .setCurrency(currency)
+                                            .setSum(sum)
+                                            .setOperation(Operations.ToPhonePayment.setExtraOption(targetNumber))
+
+        );
+    }
+
+    public void loadClientCountsList() {
+        appLoader.loadCountList(user);
     }
 }

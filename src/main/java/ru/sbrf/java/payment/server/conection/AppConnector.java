@@ -8,25 +8,26 @@ import ru.sbrf.java.payment.server.common.Storage;
 import ru.sbrf.java.payment.server.common.Validation;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
-public class AppConnector<S>  {
-    private RequestQueue<S> queue = new RequestQueue<>();
+public class AppConnector <S>  {
+    private RequestQueue<S>  queue = new RequestQueue<>();
 
-    public ArrayList<Counts> loadCountsList(S identifier, User user) {
+    public Optional<ArrayList<Counts>> loadCountsList(S identifier, Optional<User> user) {
         try {
             checkRequest(identifier);
-            return Storage.getListFromPhone(user);
+            return Optional.ofNullable(Storage.getListFromPhone(user.get()));
         } catch (WrongRequestException e){
             e.setNumber((String)identifier);
             throw e;
         }
     }
 
-    public void payToPhone(S identifier, PaymentParameters paymentParameters, long targetNumber) {
+    public void pay(S identifier, PaymentParameters paymentParameters) { //todo переработать в проверку типа вложенного енума с изменением логики
         try {
             checkRequest(identifier);
             Validation validation = new Validation(paymentParameters);
-            validation.pay(paymentParameters.getSum().get(), getOtherCountByPhone(targetNumber));
+            validation.pay(paymentParameters.getSum().get(), getOtherCountByPhone((Long)paymentParameters.getOperation().get().getExtraOption()));
         } catch (WrongRequestException e){
             e.setNumber((String)identifier);
             throw e;

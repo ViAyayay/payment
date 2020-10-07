@@ -5,6 +5,7 @@ import ru.sbrf.java.payment.client.Counts;
 import ru.sbrf.java.payment.client.User;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class WebAppendixLoader implements AppendixLoader {
     private ServerConnector connector;
@@ -17,7 +18,7 @@ public class WebAppendixLoader implements AppendixLoader {
     public User GetUser() {
         User user;
         Storage storage = new Storage();
-        user = storage.ifHasUser()? storage.getUser(): createUser();
+        user = storage.ifHasUser()? storage.getUser(): createUser(storage);
         return user;
     }
 
@@ -26,7 +27,7 @@ public class WebAppendixLoader implements AppendixLoader {
         user.setClientCountsList(connector.loadCountsList(user));
     }
 
-    private User createUser() {
+    private User createUser(Storage storage) {
         return null; //todo
     }
 }

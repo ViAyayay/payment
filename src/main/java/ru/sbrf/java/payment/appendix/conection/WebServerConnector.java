@@ -8,6 +8,7 @@ import ru.sbrf.java.payment.server.conection.AppConnector;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Optional;
 
 public class WebServerConnector implements ServerConnector {
     private AppConnector Server = new AppConnector();
@@ -19,19 +20,21 @@ public class WebServerConnector implements ServerConnector {
 
     @Override
     public ArrayList<Counts> loadCountsList(User user) {
-        try {
-            return Server.loadCountsList(getIdentifier(), user.GetUserWithoutCounts());
-        }catch (WrongRequestException e){
-            return null; //todo
-        }
+        Optional<User> post = Optional.of(user.GetUserWithoutCounts());
+        return (ArrayList<Counts>) Server.loadCountsList(getIdentifier(), post).orElse(getNullList());
     }
 
     @Override
-    public void payToPhone(PaymentParameters paymentParameters, long targetNumber) {
+    public void pay(PaymentParameters paymentParameters) {
         try {
-            Server.payToPhone(getIdentifier(), paymentParameters, targetNumber);
+            Server.pay(getIdentifier(), paymentParameters);
         }catch (WrongRequestException e){
 
         }
+    }
+
+    private ArrayList<Counts> getNullList() {
+        //todo логирование;
+        return null;
     }
 }
