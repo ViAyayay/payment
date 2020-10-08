@@ -1,19 +1,23 @@
 package ru.sbrf.java.payment.client;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import ru.sbrf.java.payment.appendix.operation.Operations;
+import ru.sbrf.java.payment.exceptions.WrongRequestException;
 
 import java.math.BigDecimal;
 import java.util.Optional;
 
-@Getter
+@AllArgsConstructor
 public class PaymentParameters {
     private Optional<User> user = Optional.empty();
     private Optional<String> targetCountNumber = Optional.empty();
     private Optional<Currency> currency = Optional.empty();
     private Optional<BigDecimal> sum = Optional.empty();
     private Optional<Operations> operation = Optional.empty();
+    private Optional<?> ExtraOption = Optional.empty();
+
+    public PaymentParameters() {
+    }
 
     public PaymentParameters setUser(User user) {
         this.user = Optional.of(user);
@@ -40,5 +44,32 @@ public class PaymentParameters {
         return this;
     }
 
-    //TODO переработать, чтобы get теры возвращали параметры, вложенные в поля optional
+    public <T> PaymentParameters setExtraOption(T extraOption) {
+        this.ExtraOption = Optional.of(extraOption);
+        return this;
+    }
+
+    public User getUser() {
+        return user.orElseThrow(() ->new WrongRequestException());
+    }
+
+    public String getTargetCountNumber() {
+        return targetCountNumber.orElseThrow(() ->new WrongRequestException());
+    }
+
+    public Currency getCurrency() {
+        return currency.orElseThrow(() ->new WrongRequestException());
+    }
+
+    public BigDecimal getSum() {
+        return sum.orElseThrow(() ->new WrongRequestException());
+    }
+
+    public Operations getOperation() {
+        return operation.orElseThrow(() ->new WrongRequestException());
+    }
+
+    public <T> T getExtraOption() {
+        return (T) ExtraOption.orElseThrow(() ->new WrongRequestException());
+    }
 }

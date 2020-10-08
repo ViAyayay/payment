@@ -15,13 +15,14 @@ public class WebServerConnector implements ServerConnector {
 
     @Override
     public String getIdentifier() {
+
         return Long.toHexString((new Date()).getTime());
     }
 
     @Override
     public ArrayList<Counts> loadCountsList(User user) {
         Optional<User> post = Optional.of(user.GetUserWithoutCounts());
-        return (ArrayList<Counts>) Server.loadCountsList(getIdentifier(), post).orElse(getNullList());
+        return (ArrayList<Counts>) Server.loadCountsList(getIdentifier(), post).orElseGet(this::logNullList);
     }
 
     @Override
@@ -33,7 +34,7 @@ public class WebServerConnector implements ServerConnector {
         }
     }
 
-    private ArrayList<Counts> getNullList() {
+    private ArrayList<Counts> logNullList() {
         //todo логирование;
         return null;
     }

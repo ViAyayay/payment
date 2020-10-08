@@ -8,7 +8,6 @@ import ru.sbrf.java.payment.client.PaymentParameters;
 import ru.sbrf.java.payment.client.User;
 
 import java.math.BigDecimal;
-import java.util.Objects;
 
 class Sbol implements ToPhonePayment {
     private String serverADDR;
@@ -37,8 +36,8 @@ class Sbol implements ToPhonePayment {
                                             .setUser(user.GetUserWithoutCounts())
                                             .setCurrency(currency)
                                             .setSum(sum)
-                                            .setOperation(Operations.ToPhonePayment.setExtraOption(targetNumber))
-
+                                            .setOperation(Operations.ToPhonePayment)
+                                            .setExtraOption(targetNumber)
         );
     }
 
