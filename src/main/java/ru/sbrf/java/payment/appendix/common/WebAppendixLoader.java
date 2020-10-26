@@ -16,10 +16,9 @@ public class WebAppendixLoader implements AppendixLoader {
 
     @Override
     public User GetUser() {
-        User user;
         Storage storage = new Storage();
-        user = storage.ifHasUser()? storage.getUser(): createUser(storage);
-        return user;
+        return Optional.of(storage.getUser())
+                                    .orElseGet(() -> createUser(storage));
     }
 
     @Override
