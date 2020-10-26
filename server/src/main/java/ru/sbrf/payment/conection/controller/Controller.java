@@ -20,7 +20,7 @@ public class Controller {
     }
 
     @PostMapping("/servers/{serverId}/{identifier}/getCountsList")
-    public ArrayList<Counts> getIdByNumber(@PathVariable("serverId") Long serverId,
+    public ArrayList<Counts> getCountsList(@PathVariable("serverId") Long serverId,
                                            @PathVariable("identifier") Long identifier,
                                            @RequestBody User user){
 
@@ -34,6 +34,7 @@ public class Controller {
                       @RequestBody PaymentParameters parameters) {
         String result = "обработка данных не удалась";
         server.pay(identifier, parameters, result);
+        parameters.setResult(result);
         return result;
     }
 }

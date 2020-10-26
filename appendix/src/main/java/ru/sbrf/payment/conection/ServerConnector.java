@@ -11,5 +11,5 @@ public interface ServerConnector {
 
     ArrayList<Counts> loadCountsList(User user);
 
-    void pay(PaymentParameters paymentParameters);
+    String pay(PaymentParameters paymentParameters);
 }

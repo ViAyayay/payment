@@ -1,17 +1,18 @@
 package ru.sbrf.payment.conection;
 
+import org.springframework.stereotype.Service;
 import ru.sbrf.payment.client.Counts;
 import ru.sbrf.payment.client.PaymentParameters;
 import ru.sbrf.payment.client.User;
-import ru.sbrf.payment.exceptions.WrongRequestException;
-import ru.sbrf.payment.conection.AppConnector;
+//import ru.sbrf.payment.conection.AppConnector;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
 
+@Service
 public class WebServerConnector implements ServerConnector {
-    private AppConnector Server = new AppConnector();
+//    private AppConnector Server = new AppConnector();
 
     @Override
     public String getIdentifier() {
@@ -21,17 +22,14 @@ public class WebServerConnector implements ServerConnector {
 
     @Override
     public ArrayList<Counts> loadCountsList(User user) {
-        Optional<User> post = Optional.of(user.GetUserWithoutCounts());
-        return (ArrayList<Counts>) Server.loadCountsList(getIdentifier(), post).orElseGet(this::logNullList);
+
+        return (ArrayList<Counts>) user.getClientCountsList();
     }
 
     @Override
-    public void pay(PaymentParameters paymentParameters) {
-        try {
-            Server.pay(getIdentifier(), paymentParameters);
-        }catch (WrongRequestException e){
+    public String pay(PaymentParameters paymentParameters) {
 
-        }
+        return new String("");
     }
 
     private ArrayList<Counts> logNullList() {
