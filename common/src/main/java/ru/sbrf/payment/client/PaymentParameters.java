@@ -13,7 +13,7 @@ public class PaymentParameters {
     private Currency currency;
     private BigDecimal sum;
     private Operations operation;
-    private String[] ExtraOption; //todo переделать
+    private String[] ExtraOption;
 
     public PaymentParameters() {
     }
