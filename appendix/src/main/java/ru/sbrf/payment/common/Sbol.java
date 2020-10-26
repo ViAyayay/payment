@@ -1,13 +1,11 @@
 package ru.sbrf.payment.common;
 
-import ru.sbrf.java.payment.appendix.conection.*;
 import ru.sbrf.payment.conection.ServerConnector;
 import ru.sbrf.payment.conection.WebServerConnector;
-import ru.sbrf.payment.operation.Operations;
-import ru.sbrf.payment.operation.ToPhonePayment;
-import ru.sbrf.java.payment.client.Currency;
-import ru.sbrf.java.payment.client.PaymentParameters;
-import ru.sbrf.java.payment.client.User;
+import ru.sbrf.payment.client.Operations;
+import ru.sbrf.payment.client.Currency;
+import ru.sbrf.payment.client.PaymentParameters;
+import ru.sbrf.payment.client.User;
 
 import java.math.BigDecimal;
 
@@ -39,7 +37,7 @@ class Sbol implements ToPhonePayment {
                                             .setCurrency(currency)
                                             .setSum(sum)
                                             .setOperation(Operations.ToPhonePayment)
-                                            .setExtraOption(targetNumber)
+                                            .setExtraOption(String.valueOf(targetNumber))
         );
     }
 

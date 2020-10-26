@@ -1,6 +1,6 @@
 package ru.sbrf.payment.common;
 
-import ru.sbrf.java.payment.client.User;
+import ru.sbrf.payment.client.User;
 
 public interface AppendixLoader {
 

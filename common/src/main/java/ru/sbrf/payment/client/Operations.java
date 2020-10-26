@@ -1,4 +1,4 @@
-package ru.sbrf.payment.operation;
+package ru.sbrf.payment.client;
 
 import lombok.Getter;
 

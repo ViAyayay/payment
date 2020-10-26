@@ -1,4 +1,4 @@
-package payment.phonenumbers;
+package ru.sbrf.payment.phonenumbers;
 
 import lombok.Getter;
 import lombok.Setter;

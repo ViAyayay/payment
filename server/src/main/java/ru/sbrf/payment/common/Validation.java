@@ -1,8 +1,8 @@
 package ru.sbrf.payment.common;
 
 import lombok.AllArgsConstructor;
-import ru.sbrf.java.payment.client.Counts;
-import ru.sbrf.java.payment.exceptions.WrongRequestException;
+import ru.sbrf.payment.client.Counts;
+import ru.sbrf.payment.exceptions.WrongRequestException;
 
 import java.math.BigDecimal;
 

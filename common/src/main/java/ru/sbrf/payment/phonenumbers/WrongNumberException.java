@@ -1,4 +1,4 @@
-package payment.phonenumbers;
+package ru.sbrf.payment.phonenumbers;
 
 public class WrongNumberException extends RuntimeException{
     public WrongNumberException() {

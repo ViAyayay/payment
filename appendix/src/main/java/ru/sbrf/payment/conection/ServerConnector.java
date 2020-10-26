@@ -1,8 +1,8 @@
 package ru.sbrf.payment.conection;
 
-import ru.sbrf.java.payment.client.Counts;
-import ru.sbrf.java.payment.client.PaymentParameters;
-import ru.sbrf.java.payment.client.User;
+import ru.sbrf.payment.client.Counts;
+import ru.sbrf.payment.client.PaymentParameters;
+import ru.sbrf.payment.client.User;
 
 import java.util.ArrayList;
 

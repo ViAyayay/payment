@@ -1,9 +1,9 @@
 package ru.sbrf.payment.conection;
 
-import ru.sbrf.java.payment.client.Counts;
-import ru.sbrf.java.payment.client.PaymentParameters;
-import ru.sbrf.java.payment.client.User;
-import ru.sbrf.java.payment.exceptions.WrongRequestException;
+import ru.sbrf.payment.client.Counts;
+import ru.sbrf.payment.client.PaymentParameters;
+import ru.sbrf.payment.client.User;
+import ru.sbrf.payment.exceptions.WrongRequestException;
 import ru.sbrf.payment.common.Operator;
 import ru.sbrf.payment.common.Storage;
 

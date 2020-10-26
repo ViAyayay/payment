@@ -1,6 +1,6 @@
-package payment.phonenumbers;
+package ru.sbrf.payment.phonenumbers;
 
-import payment.exceptions.WrongRequestException;
+import ru.sbrf.payment.exceptions.WrongRequestException;
 
 public class PhoneVerification{
     private String number;

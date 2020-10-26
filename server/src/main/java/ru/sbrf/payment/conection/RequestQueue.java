@@ -1,6 +1,6 @@
 package ru.sbrf.payment.conection;
 
-import ru.sbrf.java.payment.exceptions.WrongRequestException;
+import ru.sbrf.payment.exceptions.WrongRequestException;
 
 import java.util.LinkedList;
 

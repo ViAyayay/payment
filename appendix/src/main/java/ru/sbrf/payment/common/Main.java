@@ -1,6 +1,6 @@
 package ru.sbrf.payment.common;
 
-import ru.sbrf.payment.operation.Operations;
+import ru.sbrf.payment.client.Operations;
 
 public class Main {
     public static void main(String[] args) {

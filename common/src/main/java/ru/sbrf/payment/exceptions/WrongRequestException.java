@@ -1,4 +1,4 @@
-package payment.exceptions;
+package ru.sbrf.payment.exceptions;
 
 public class WrongRequestException extends RuntimeException{
     private String Number;

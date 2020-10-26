@@ -1,9 +1,10 @@
 package ru.sbrf.payment.common;
 
-import ru.sbrf.java.payment.client.Counts;
-import ru.sbrf.java.payment.client.PaymentParameters;
-import ru.sbrf.java.payment.exceptions.WrongRequestException;
+import ru.sbrf.payment.client.Counts;
+import ru.sbrf.payment.client.PaymentParameters;
+import ru.sbrf.payment.exceptions.WrongRequestException;
 import ru.sbrf.payment.conection.AppConnector;
+import ru.sbrf.payment.client.Operations;
 
 import java.util.Optional;
 
@@ -19,6 +20,7 @@ public class Operator {
     }
 
     public void pay() {
+
         Validation validation = new Validation(count);
         validation.pay(paymentParameters.getSum());
         switch (paymentParameters.getOperation()){

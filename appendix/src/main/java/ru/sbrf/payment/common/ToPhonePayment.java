@@ -1,6 +1,6 @@
-package ru.sbrf.payment.operation;
+package ru.sbrf.payment.common;
 
-import ru.sbrf.java.payment.client.Currency;
+import ru.sbrf.payment.client.Currency;
 
 import java.math.BigDecimal;
 

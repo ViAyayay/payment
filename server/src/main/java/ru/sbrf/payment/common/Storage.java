@@ -1,9 +1,9 @@
 package ru.sbrf.payment.common;
 
-import ru.sbrf.java.payment.client.Counts;
-import ru.sbrf.java.payment.client.Currency;
-import ru.sbrf.java.payment.client.User;
-import ru.sbrf.java.payment.exceptions.WrongRequestException;
+import ru.sbrf.payment.client.Counts;
+import ru.sbrf.payment.client.Currency;
+import ru.sbrf.payment.client.User;
+import ru.sbrf.payment.exceptions.WrongRequestException;
 
 import java.util.ArrayList;
 import java.util.HashMap;

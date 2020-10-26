@@ -1,4 +1,4 @@
-package payment.client;
+package ru.sbrf.payment.client;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
