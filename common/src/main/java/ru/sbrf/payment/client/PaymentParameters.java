@@ -13,7 +13,8 @@ public class PaymentParameters {
     private Currency currency;
     private BigDecimal sum;
     private Operations operation;
-    private String[] ExtraOption; //todo переделать
+    private String[] extraOption;
+    private String result;
 
     public PaymentParameters() {
     }
@@ -44,7 +45,7 @@ public class PaymentParameters {
     }
 
     public PaymentParameters setExtraOption(String... extraOption) {
-        this.ExtraOption = extraOption;
+        this.extraOption = extraOption;
         return this;
     }
 
@@ -69,6 +70,14 @@ public class PaymentParameters {
     }
 
     public String[] getExtraOption() {
-        return Optional.of(ExtraOption).orElseThrow(() ->new WrongRequestException());
+        return Optional.of(extraOption).orElseThrow(() ->new WrongRequestException());
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
     }
 }

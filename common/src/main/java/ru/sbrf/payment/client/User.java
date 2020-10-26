@@ -1,7 +1,12 @@
 package ru.sbrf.payment.client;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 
+@Getter
+@Setter
 public class User  {
     private long phoneNumber;
     private ArrayList<Counts> clientCountsList ;
@@ -10,15 +15,7 @@ public class User  {
         this.phoneNumber = phoneNumber;
     }
 
-    public User GetUserWithoutCounts(){
+    public User getUserWithoutCounts(){
         return new User(phoneNumber);
-    }
-
-    public long getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setClientCountsList(ArrayList<Counts> clientCountsList) {
-        this.clientCountsList = clientCountsList;
     }
 }

@@ -33,7 +33,7 @@ class Sbol implements ToPhonePayment {
     @Override
     public void payToPhone(long targetNumber, BigDecimal sum, Currency currency){
         connector.pay(new PaymentParameters()
-                                            .setUser(user.GetUserWithoutCounts())
+                                            .setUser(user.getUserWithoutCounts())
                                             .setCurrency(currency)
                                             .setSum(sum)
                                             .setOperation(Operations.ToPhonePayment)
